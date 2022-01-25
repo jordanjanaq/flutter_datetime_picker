@@ -154,6 +154,44 @@ class DatePicker {
       ),
     );
   }
+  
+  ///
+  /// Display date&time picker bottom sheet.
+  ///
+  static Future<DateTime?> showDateTimePicker2(
+      BuildContext context, {
+        bool showTitleActions: true,
+        DateTime? minTime,
+        DateTime? maxTime,
+        DateChangedCallback? onChanged,
+        DateChangedCallback? onConfirm,
+        DateCancelledCallback? onCancel,
+        locale: LocaleType.en,
+        DateTime? currentTime,
+        DatePickerTheme? theme,
+      }) async {
+    return await Navigator.push(
+      context,
+      _DatePickerRoute(
+        showTitleActions: showTitleActions,
+        onChanged: onChanged,
+        onConfirm: onConfirm,
+        onCancel: onCancel,
+        locale: locale,
+        theme: theme,
+        barrierLabel:
+        MaterialLocalizations.of(context).modalBarrierDismissLabel,
+        pickerModel: DateTimePickerModel2(
+          currentTime: currentTime,
+          minTime: minTime,
+          maxTime: maxTime,
+          locale: locale,
+        ),
+      ),
+    );
+  }
+}
+
 
   ///
   /// Display date picker bottom sheet witch custom picker model.
